@@ -1,0 +1,43 @@
+# ==========================================
+# BACKEND (edu_track_backend)
+# ==========================================
+edu_track_backend/.venv/
+edu_track_backend/env/
+edu_track_backend/venv/
+edu_track_backend/__pycache__/
+edu_track_backend/*.py[cod]
+edu_track_backend/*$py.class
+edu_track_backend/db.sqlite3
+edu_track_backend/media/
+edu_track_backend/staticfiles/
+
+# ==========================================
+# FRONTEND (frontend)
+# ==========================================
+frontend/logs
+frontend/*.log
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
+frontend/lerna-debug.log*
+
+frontend/node_modules
+frontend/dist
+frontend/dist-ssr
+frontend/*.local
+
+# ==========================================
+# GENERAL / EDITORS (Root Level)
+# ==========================================
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# IDE settings (applied globally or per folder)
+.vscode/*
+!.vscode/extensions.json
+.idea/
