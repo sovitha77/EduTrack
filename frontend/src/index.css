@@ -1,111 +1,247 @@
+
+/* Custom Variable Setup */
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+  --primary-color: #4f46e5;
+  --primary-hover: #4338ca;
+  --bg-dark: #0f172a;
+  --bg-light: #f8fafc;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --risk-high: #ef4444;
+  --risk-medium: #f59e0b;
 }
 
 body {
   margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--text-main);
+  background-color: var(--bg-light);
 }
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
+/* Auth Split-Screen Layout */
+.auth-layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Left Panel - Tech Branding */
+.auth-left {
+  flex: 1;
+  background-color: var(--bg-dark);
+  color: #ffffff;
+  padding: 3rem;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
+@media (max-width: 992px) {
+  .auth-left {
+    display: none; /* Collapses beautifully on mobile devices */
+  }
+}
+
+.brand-mark {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+}
+
+.brand-icon {
+  font-size: 1.75rem;
+}
+
+.left-headline {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.left-headline span {
+  color: #818cf8;
+}
+
+.left-sub {
+  color: #94a3b8;
+  font-size: 1.1rem;
+  max-width: 460px;
+  line-height: 1.6;
+}
+
+/* Live Analytics Preview Card */
+.preview-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.5rem;
+  backdrop-filter: blur(8px);
+  max-width: 400px;
+}
+
+.preview-header {
+  font-size: 0.85rem;
+  text-uppercase: uppercase;
+  color: #64748b;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.preview-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.preview-row:last-child {
+  border-bottom: none;
+}
+
+.preview-name {
   font-weight: 500;
-  color: var(--text-h);
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
+.badge-high, .badge-medium {
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+.badge-high { background: rgba(239, 68, 68, 0.15); color: #f87171; }
+.badge-medium { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+
+
+.auth-right {
+  flex: 1;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+.auth-box {
+  width: 100%;
+  max-width: 420px;
+}
+
+.auth-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.5rem;
+}
+
+.auth-sub {
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+/* Forms Custom Overrides */
+.form-label {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+.form-control, .form-select {
+  padding: 0.75rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+}
+
+/* Custom Action Buttons */
+.btn-submit {
+  width: 100%;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  padding: 0.85rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-submit:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+
+.auth-alert {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.auth-alert.error {
+  background-color: #fef2f2;
+  border: 1px solid #fca5a5;
+  color: #991b1b;
+}
+
+/* Utilities */
+.divider-or {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--text-muted);
+  margin: 1.5rem 0;
+  font-size: 0.85rem;
+}
+
+.divider-or::before, .divider-or::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.divider-or::before { margin-right: .75em; }
+.divider-or::after { margin-left: .75em; }
+
+.switch-text {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.switch-link {
+  color: var(--primary-color);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.switch-link:hover {
+  text-decoration: underline;
 }
